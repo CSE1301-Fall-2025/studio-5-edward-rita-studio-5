@@ -13,6 +13,7 @@ public class Methods {
 	 * @param y2 y-coordinate of another point
 	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
 	 */
+
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
 		double distance = 0;
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
@@ -30,6 +31,13 @@ public class Methods {
 	public static void drawBullsEye(double x, double y, double radius) {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledCircle(x, y, radius);
+
+		StdDraw.setPenColor(StdDraw.BLUE);
+		StdDraw.filledCircle(x,y,radius*3.0/4.0);
+		StdDraw.setPenColor(StdDraw.RED);
+		StdDraw.filledCircle(x,y,radius*2.0/4.0);
+		StdDraw.setPenColor(StdDraw.YELLOW);
+		StdDraw.filledCircle(x,y,radius*1.0/4.0);
 
 		// TODO: Draw the remaining rings of the bull's eye
 		// Blue ring with 3.0/4.0 the radius
@@ -61,11 +69,17 @@ public class Methods {
 	 */
 	public static String substituteAll(String source, char target, String replacement) {
 		String result = "";
+		while (source.indexOf(target)>= 0){
+			int index = source.indexOf(target);
+			String firstpart = source.substring(0,index);
+			String lastpart = source.substring(index+1);
+			result = firstpart + replacement + lastpart;
+
+		}
 		// TODO: Finish this method
-		
 		return result;
 	}
-
+	
 	/**
 	 * Compute the sum of elements in an array
 	 * 
